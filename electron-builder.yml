@@ -1,0 +1,27 @@
+appId: com.team.taskorchestrator
+productName: Task Orchestrator
+directories:
+  output: dist
+  buildResources: build
+files:
+  - out/**/*
+  - package.json
+extraResources:
+  - from: resources/playbooks
+    to: playbooks
+  - from: mcp-servers
+    to: mcp-servers
+    filter: ["**/*", "!**/__pycache__/**", "!**/.venv/**"]
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+mac:
+  target: [dmg]
+  category: public.app-category.developer-tools
+asarUnpack:
+  - node_modules/node-pty/**
